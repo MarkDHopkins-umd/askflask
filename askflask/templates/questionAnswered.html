@@ -16,13 +16,15 @@
       <form method="POST" action="">
         {{ form.csrf_token }}
         <h2>{{question}}</h2>
-        {% if current_user.is_authenticated %}
+        
         <div class="row">
           <div class="col">
             <form method="POST" action="">
-              {{ form.csrf_token }}
+       
               <div class="form-group">
                 <h1><small class="float-right">❤  <b><span>&#183;</span> {{ numlikes }}  {% if numlikes == 1 %} like! {% else %} likes! {%endif%}</b></small></h1>
+                {% if current_user.is_authenticated %}
+                {{ form.csrf_token }}
                 {{form1.like()}}
               </form>
             </div>
