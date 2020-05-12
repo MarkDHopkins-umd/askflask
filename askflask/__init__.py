@@ -21,7 +21,7 @@ app = Flask(__name__)
 
 # app.config["MONGO_URI"] = "mongodb://localhost:27017/finalProject"
 
-app.config['MONGODB_HOST'] = 'mongodb://heroku_rwvrz8xh:38reaudqd77rasbafg4qd1k5fd@ds149491.mlab.com:49491/heroku_rwvrz8xh?retryWrites=false'
+app.config['MONGODB_HOST'] = 'mongodb://heroku_rwvrz8xh:38reaudqd77rasbafg4qd1k5fd@ds149491.mlab.com:49491/heroku_4pzm3qfc?retryWrites=false'
 #app.config['MONGODB_HOST'] = 'mongodb://localhost:27017/project'
 app.config['SECRET_KEY'] = b'\x020;yr\x91\x11\xbe"\x9d\xc1\x14\x91\xadf\xec'
 app.config['MAIL_PASSWORD'] = 'Summer1793$'
