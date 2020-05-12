@@ -1,0 +1,1 @@
+from askflask import app
