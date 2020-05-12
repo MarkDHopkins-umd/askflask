@@ -1,0 +1,43 @@
+{% extends "header.html" %}
+{% block content %}
+
+<div class="row">
+    <div class="col">
+        <a href="{{ url_for('questionpage.questionAsk') }}"><b> Want to ask a question!?! </b></a>
+        
+        <br>You can also search for one!
+    </div>
+    <div class="col">
+        <form action="/" class="form-inline my-2 my-lg-0" method="POST">
+            {{ form.csrf_token }}
+            {{ form.search_query(class="form-control", placeholder="Search for a question!") }}
+
+            {% if form.search_query.errors %}
+            <div class="alert alert-warning" role="alert">
+                {% for error in form.search_query.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {{ form.submit(class="btn btn-outline-success") }}
+        </form>
+    </div>
+    
+    <div>
+        <h3>ASK ANY QUESTION OR VIEW ANY ANSWER! Take a look at these questions below! </h3>
+        {% for q in questions %}
+        <h3> {{q.date}}
+        ❤ <b>{{ q.likes }} <span>&#183;</span></b>
+        <a href="{{ url_for('questionpage.questionAnswered', questionAsked=q.content) }}"><b>{{ q.content }} </b></a></h3>
+     
+
+    
+            <br>
+          {% endfor %}
+         <b>Would you like to see all of the questions? <a href="{{ url_for('questionpage.allQuestions') }}">{{ "Click here!" }} </a></b>
+         <br>
+         <a href="{{ url_for('homepage.groupMembers') }}"><b> Link to all group members.</b></a>
+    </div>
+</div>
+{% endblock %}

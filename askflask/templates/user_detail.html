@@ -1,0 +1,48 @@
+{% extends "header.html" %}
+{% block content %}
+<div class="row">
+    <div class="col">
+        {# Display any error messages #}
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        {# Indicate which user's reviews we're looking at #}
+        {% if user!=NULL %}
+        <h1>{{user}}'s Questions!</h1>
+        {% endif %}
+        {% if user==NULL %}
+        <h1>THIS USER DOESN'T EXIST!</h1>
+        {% endif %}
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+       
+        <span class="float-right">
+            <p class="font-weight-bold">
+               Total Questions Asked: {{total}}
+            </p>
+            
+        </span>
+        <br />
+        <br />
+        {% for question in questions %}
+      <li class="media review-item">
+        <div class="media-body">
+          <span class="float-right">
+            <small>{{ question.date }}</small>
+          </span>
+          <p>
+            <p class="font-weight-bold">
+                <a href="{{ url_for('questionpage.questionAnswered', questionAsked=question.content) }}">{{question.content}}</a>
+            </p>
+         
+       
+          </p>
+        </div>
+      </li>
+      {% endfor %}
+    </div>
+</div>
+{% endblock %}

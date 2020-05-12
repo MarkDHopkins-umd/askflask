@@ -1,0 +1,51 @@
+{% extends "header.html" %}
+{% block content %}
+
+<div class="row">
+    <div class="col">
+        
+        {# Greeting #}
+     
+        <h2>Welcome to your account {{user.username}}!</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        {# Username Update Form #}
+       
+        <form method="POST" action="">
+            {{ form.csrf_token }}
+            <h3>Do you want to change your username!</h3>
+            <div class="form-group">
+        {{ form.username(class="form-control", placeholder="Enter your new username") }}
+            </div>
+        <div class="form-group">
+        {{ form.submit(class="form-control") }}
+        <br /> 
+        <span class="float-left">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              {% for message in messages %}
+                <small>{{ message }}</small> 
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+        </span>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        {# EXTRA CREDIT #}
+        {# Profile Picture Update Form #}
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        {# Link to see all of the current user's reviews. #}
+        <a href="{{ url_for('loginpage.user_detail', username=user.username) }}"><b> Want to see all your questions! </b></a>
+    </div>
+</div>
+
+{% endblock %}

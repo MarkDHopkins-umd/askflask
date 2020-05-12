@@ -1,0 +1,92 @@
+{% extends "header.html" %}
+{% block content %}
+
+{% if error_msg %}
+<b>{{ error_msg }}</b>
+{% endif %}
+
+
+
+<div class="row">
+  <div class="col">
+    <div class="text-left">
+      <h1>ASK A QUESTION</h1>
+      <form method="POST" action="">
+        {{ form.csrf_token }}
+        
+        <div class="form-group">
+            <div class="form-group">
+              
+    {{ form.text(class="form-control") }}
+    {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              {% for message in messages %}
+                <large><a href="{{ url_for('questionpage.questionAnswered', questionAsked=question) }}">{{message}}</a>  </large> 
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+    </div>
+  
+    <div class="form-group">
+    {{ form.submit(class="form-control")}} 
+    
+    
+        </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{#
+
+<div class="row">
+  <div class="col-md-12">
+    <h1> Reviews <small class="float-right">{{ reviews.count() }} reviews</small></h1>
+    <ul class="media-list">
+      {% for review in reviews %}
+      <li class="media review-item">
+        <div class="media-body">
+          <span class="float-right">
+            <small>{{ review.date }}</small>
+          </span>
+          <a href="{{ url_for('user_detail', username=review.commenter.username) }}">
+            <strong>@{{ review.commenter.username }}</strong>
+          </a>
+          <p>
+            {{ review.content }}
+          </p>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% if current_user.is_authenticated %}
+
+<div class="row">
+  <div class="col">
+    <form method="POST" action="">
+      {{ form.csrf_token }}
+      <div class="form-group">
+        {{ form.text.label }}
+        {{ form.text(class="form-control") }}
+
+        {% if form.text.errors %}
+        <div class="alert alert-warning" role="alert">
+          {% for error in form.text.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+      </div>
+      {{ form.submit() }}
+    </form>
+  </div>
+</div>
+{% endif %}
+{% endif %}
+#}
+{% endblock content %}

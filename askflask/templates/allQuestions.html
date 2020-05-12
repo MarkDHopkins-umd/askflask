@@ -1,0 +1,11 @@
+{% extends "header.html" %}
+{% block content %}
+
+{% for q in questions %}
+        <h3> {{q.date}}
+        ❤ <b>{{ q.likes }} <span>&#183;</span></b>
+        <a href="{{ url_for('questionpage.questionAnswered', questionAsked=q.content) }}"><b>{{ q.content }} </b></a></h3>
+            <br>
+          {% endfor %}
+
+{% endblock %}
